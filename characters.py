@@ -15,6 +15,5 @@ def add_character():
     cursor.execute(sql, (name, arcane, nationality, physical_description))
     db.commit()
     print(f"'{name}' has been added!")
-    db.close
+    db.close()
 
-db.close()
