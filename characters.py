@@ -9,7 +9,7 @@ def add_character():
     print("\nAdding a Character...")
     name = input("\nTheir Name?: ")
     arcane = input(f"{name}'s Arcane: ")
-    nationality = input(f"{name}'s Nationality Desciption: ")
+    nationality = input(f"{name}'s Nationality: ")
     print(f"\nREMINDER to describe them well: Gender, age, eye color, hair color, height, among other misc details.")
     physical_description = input(f"{name}'s Physical Description: ")
 
@@ -49,7 +49,7 @@ def update_character():
         print("[2] Arcane")
         print("[3] Nationality")
         print("[4] Physical Desc.")
-        print("[5] Exit")
+        print("[5] Back")
         choice = input("Enter Choice: ")
         if choice == "-67":
             print("HA. HAHA. HAHAHA. IM LOSING MY MIND BRUH.")
