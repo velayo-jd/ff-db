@@ -28,7 +28,7 @@ def view_terminologies():
         return False
     else:
         headers = ["ID", "Term", "Term Type", "Term Definition"]
-        print(tabulate(rows, headers=headers, tablefmt="grid"))
+        print(tabulate(rows, headers=headers, tablefmt="grid", maxcolwidths=[5, 15, 15, 20, 40]))
         return True
 
 
