@@ -1,3 +1,4 @@
+from tabulate import tabulate
 from db_connect import connect
 db = connect()
 cursor = db.cursor()
@@ -6,14 +7,101 @@ def add_character():
     sql = "INSERT INTO characters (name, arcane, nationality, physical_description) VALUES (%s, %s, %s, %s)"
 
     print("\nAdding a Character...")
-    name = input("Their Name?: ")
+    name = input("\nTheir Name?: ")
     arcane = input(f"{name}'s Arcane: ")
     nationality = input(f"{name}'s Nationality Desciption: ")
     print(f"\nREMINDER to describe them well: Gender, age, eye color, hair color, height, among other misc details.")
-    physical_description = input(f"{name}'s Physical Desciption: ")
+    physical_description = input(f"{name}'s Physical Description: ")
 
     cursor.execute(sql, (name, arcane, nationality, physical_description))
     db.commit()
     print(f"'{name}' has been added!")
-    db.close()
 
+
+def view_characters():
+    print("\nCurrent Characters...")
+
+    cursor.execute("SELECT id, name, arcane, nationality, physical_description FROM characters")
+    rows = cursor.fetchall()
+
+    if not rows:
+        print("No characters found.")
+        return False
+    else:
+        headers = ["ID", "Name", "Arcane", "Nationality", "Physical Description"]
+        print(tabulate(rows, headers=headers, tablefmt="grid"))
+        return True
+
+
+def update_character():
+    if not view_characters():
+        print("\nNo characters to update.")
+        return
+    
+    print("\nUpdating Character...")
+    char_id = input("\nEnter character ID to update: ")
+
+    sooo_valid = ["1", "2", "3", "4", "5", "Name", "Arcane", "Nationality", "Physical Desc.", "Exit"]
+    BruhMoment = False
+    while BruhMoment == False:
+        print("\nWhat do you want to update?")
+        print("[1] Name")
+        print("[2] Arcane")
+        print("[3] Nationality")
+        print("[4] Physical Desc.")
+        print("[5] Exit")
+        choice = input("Enter Choice: ")
+        if choice == "-67":
+            print("HA. HAHA. HAHAHA. IM LOSING MY MIND BRUH.")
+            continue
+        if choice not in sooo_valid:
+            print("Please Input a Valid Choice")
+            continue
+        if choice in ["5", "Exit"]:
+            print("Update cancelled.")
+            return
+        BruhMoment = True
+
+    field_map = {
+        "1": "name", "Name": "name",
+        "2": "arcane", "Arcane": "arcane",
+        "3": "nationality", "Nationality": "nationality",
+        "4": "physical_description", "Physical Desc.": "physical_description"
+    }
+
+    field = field_map[choice]
+    updoot_val = input(f"Enter new {field}: ")
+
+    sql = f"UPDATE characters SET {field} = %s WHERE id = %s"
+    cursor.execute(sql, (updoot_val, char_id))
+    db.commit()
+
+    if cursor.rowcount == 0:
+        print("No character found |*_*|")
+    else:
+        print("Character succefully updated |^ - ^|")
+
+def delete_character():
+    if not view_characters():
+        print("\nNo characters to delete.")
+        return
+
+    print("\nDeleting Character...")
+    char_id = input("\nEnter character ID to delete: ")
+    checker = input(f"You SURE you want to delete ch{char_id}? (y/n):")
+
+    if checker.lower() == "n":
+        print("Deletetion Canceled.")
+        return
+    if checker.lower() != "y":
+        print("Enter 'y' or 'n' bro it's not that hard istg")
+        return
+
+    delete_query = "DELETE FROM characters where id = %s"
+    cursor.execute(delete_query, (char_id,))
+    db.commit()
+
+    if cursor.rowcount == 0:
+        print("There's no character with that ID")
+    else:
+        print("TO MAKE NOVELS, ONE MUST LEARN TO MURDER THEIR BELOVED")
