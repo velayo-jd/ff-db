@@ -7,7 +7,7 @@ def add_terminology():
     sql = "INSERT INTO terminologies (term, term_type, term_definition) VALUES (%s, %s, %s)"
 
     print("\nAdding a Terminology...")
-    term = input("\nThe term?: ")
+    term = input("The term?: ")
     term_type = input(f"What type of term is '{term}'?: ")
     print(f"\nREMINDER to define it well; like 5Ws 1H.")
     term_definition = input(f"{term}'s Definition: ")
@@ -38,7 +38,7 @@ def update_terminology():
         return
     
     print("\nUpdating Terminology...")
-    char_id = input("\nEnter terminology ID to update: ")
+    char_id = input("Enter terminology ID to update: ")
 
     sooo_valid = ["1", "2", "3", "4", "Term", "Term Type", "Term Definition", "Exit"]
     BruhMoment = False

@@ -7,7 +7,7 @@ def add_character():
     sql = "INSERT INTO characters (name, arcane, nationality, physical_description) VALUES (%s, %s, %s, %s)"
 
     print("\nAdding a Character...")
-    name = input("\nTheir Name?: ")
+    name = input("Their Name?: ")
     arcane = input(f"{name}'s Arcane: ")
     nationality = input(f"{name}'s Nationality: ")
     print(f"\nREMINDER to describe them well: Gender, age, eye color, hair color, height, among other misc details.")
@@ -39,7 +39,7 @@ def update_character():
         return
     
     print("\nUpdating Character...")
-    char_id = input("\nEnter character ID to update: ")
+    char_id = input("Enter character ID to update: ")
 
     sooo_valid = ["1", "2", "3", "4", "5", "Name", "Arcane", "Nationality", "Physical Desc.", "Exit"]
     BruhMoment = False
