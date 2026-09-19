@@ -29,7 +29,7 @@ def view_characters():
         return False
     else:
         headers = ["ID", "Name", "Arcane", "Nationality", "Physical Description"]
-        print(tabulate(rows, headers=headers, tablefmt="grid"))
+        print(tabulate(rows, headers=headers, tablefmt="grid", maxcolwidths=[5, 15, 15, 20, 40]))
         return True
 
 
