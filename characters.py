@@ -88,7 +88,7 @@ def delete_character():
 
     print("\nDeleting Character...")
     char_id = input("\nEnter character ID to delete: ")
-    checker = input(f"You SURE you want to delete ch{char_id}? (y/n):")
+    checker = input(f"You SURE you want to delete ch.{char_id}? (y/n):")
 
     if checker.lower() == "n":
         print("Deletetion Canceled.")
