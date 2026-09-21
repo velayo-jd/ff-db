@@ -21,7 +21,7 @@ CREATE TABLE locations (
     name VARCHAR(100) NOT NULL, -- Central Nu Regional Hospital
     type VARCHAR(50), -- Hospital
     region TEXT, -- Central Nu, near The Medical Recidency
-    status VARCHAR(50), -- In Operation, from Phase 1 to Phase 3
+    stat VARCHAR(50), -- In Operation, from Phase 1 to Phase 3
     description TEXT -- The largest hospital in Nu, and is one of the last bastions of justice in the series.
                      -- Funded by the goverment and Richoka; they're the golden standard in shifts & medical practices  
 );
