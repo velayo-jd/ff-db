@@ -52,7 +52,7 @@ def search_terminology(): #c+v on update_character dawgs
         if choice not in sooo_valid:
             print("Please Input a Valid Choice")
             continue
-        if choice in ["4", "Exit"]:
+        if choice in ["4", "Back"]:
             print("Update cancelled.")
             return
         BruhMoment = True

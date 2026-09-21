@@ -54,7 +54,7 @@ def search_character(): #c+v on update_character dawgs
         if choice not in sooo_valid:
             print("Please Input a Valid Choice")
             continue
-        if choice in ["5", "Exit"]:
+        if choice in ["5", "Back"]:
             print("Update cancelled.")
             return
         BruhMoment = True
