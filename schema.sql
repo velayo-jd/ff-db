@@ -25,4 +25,3 @@ CREATE TABLE locations (
     details TEXT -- The largest hospital in Nu, and is one of the last bastions of justice in the series.
                      -- Funded by the goverment and Richoka; they're the golden standard in shifts & medical practices  
 );
-
