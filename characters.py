@@ -4,7 +4,7 @@ db = connect()
 cursor = db.cursor()
 
 def add_character():
-    sql = "INSERT INTO characters (name, arcane, nationality, physical_description) VALUES (%s, %s, %s, %s)"
+    query = "INSERT INTO characters (name, arcane, nationality, physical_description) VALUES (%s, %s, %s, %s)"
 
     print("\nAdding a Character...")
     name = input("Their Name?: ")
@@ -13,7 +13,7 @@ def add_character():
     print(f"\nREMINDER to describe them well: Gender, age, eye color, hair color, height, among other misc details.")
     physical_description = input(f"{name}'s Physical Description: ")
 
-    cursor.execute(sql, (name, arcane, nationality, physical_description))
+    cursor.execute(query, (name, arcane, nationality, physical_description))
     db.commit()
     print(f"'{name}' has been added!")
 
@@ -21,19 +21,25 @@ def add_character():
 def view_characters():
     print("\nCurrent Characters...")
 
-    cursor.execute("SELECT id, name, arcane, nationality, physical_description FROM characters")
-    rows = cursor.fetchall()
+    cursor.execute("SELECT * FROM characters")
+    myresult = cursor.fetchall()
 
-    if not rows:
+    if not myresult:
         print("No characters found.")
         return False
     else:
         headers = ["ID", "Name", "Arcane", "Nationality", "Physical Description"]
-        print(tabulate(rows, headers=headers, tablefmt="grid", maxcolwidths=[5, 15, 15, 20, 40]))
+        print(tabulate(myresult, headers=headers, tablefmt="grid", maxcolwidths=[5, 15, 15, 20, 40]))
         return True
 
+#def search_characters():
+ #   print("\nViewing  Character...")
+  #  char_id = input("Enter character ID to searh: ")
+   # ok problem
 
+    
 def update_character():
+
     if not view_characters():
         print("\nNo characters to update.")
         return
@@ -62,18 +68,18 @@ def update_character():
             return
         BruhMoment = True
 
-    field_map = {
+    what_this = {
         "1": "name", "Name": "name",
         "2": "arcane", "Arcane": "arcane",
         "3": "nationality", "Nationality": "nationality",
         "4": "physical_description", "Physical Desc.": "physical_description"
     }
 
-    field = field_map[choice]
+    field = what_this[choice]
     updoot_val = input(f"Enter new {field}: ")
 
-    sql = f"UPDATE characters SET {field} = %s WHERE id = %s"
-    cursor.execute(sql, (updoot_val, char_id))
+    query = f"UPDATE characters SET {field} = %s WHERE id = %s"
+    cursor.execute(query, (updoot_val, char_id))
     db.commit()
 
     if cursor.rowcount == 0:

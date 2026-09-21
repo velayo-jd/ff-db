@@ -4,7 +4,7 @@ db = connect()
 cursor = db.cursor()
 
 def add_terminology():
-    sql = "INSERT INTO terminologies (term, term_type, term_definition) VALUES (%s, %s, %s)"
+    query = "INSERT INTO terminologies (term, term_type, term_definition) VALUES (%s, %s, %s)"
 
     print("\nAdding a Terminology...")
     term = input("The term?: ")
@@ -12,7 +12,7 @@ def add_terminology():
     print(f"\nREMINDER to define it well; like 5Ws 1H.")
     term_definition = input(f"{term}'s Definition: ")
 
-    cursor.execute(sql, (term, term_type, term_definition))
+    cursor.execute(query, (term, term_type, term_definition))
     db.commit()
     print(f"'{term}' has been added!")
 
@@ -20,15 +20,15 @@ def add_terminology():
 def view_terminologies():
     print("\nCurrent Terminologies...")
 
-    cursor.execute("SELECT term, term_type, term_definition FROM terminologies")
-    rows = cursor.fetchall()
+    cursor.execute("SELECT * FROM terminologies")
+    myresult = cursor.fetchall()
 
-    if not rows:
+    if not myresult:
         print("No terminology found.")
         return False
     else:
         headers = ["ID", "Term", "Term Type", "Term Definition"]
-        print(tabulate(rows, headers=headers, tablefmt="grid", maxcolwidths=[5, 15, 15, 20, 40]))
+        print(tabulate(myresult, headers=headers, tablefmt="grid", maxcolwidths=[5, 15, 15, 20, 40]))
         return True
 
 
@@ -60,17 +60,19 @@ def update_terminology():
             return
         BruhMoment = True
 
-    field_map = {
+    what_this = {
         "1": "term", "Term": "term",
-        "2": "term type", "Term Type": "term type",
-        "3": "term definition", "Term Definition": "term definition",
+        "2": "term_type", "Term Type": "term_type",
+        "3": "term_definition", "Term Definition": "term_definition",
     }
 
-    field = field_map[choice]
+    
+    
+    field = what_this[choice]
     updoot_val = input(f"Enter new {field}: ")
 
-    sql = f"UPDATE terminologies SET {field} = %s WHERE id = %s"
-    cursor.execute(sql, (updoot_val, char_id))
+    query = f"UPDATE terminologies SET {field} = %s WHERE id = %s"
+    cursor.execute(query, (updoot_val, char_id))
     db.commit()
 
     if cursor.rowcount == 0:
