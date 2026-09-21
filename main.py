@@ -55,7 +55,7 @@ def terminologies_menu():
 
 def menu():
     while True:
-        print("\n==================")
+        print("\n===================")
         print("Final Fall DB Bible")
         print("-------------------")
         print("[1] Characters")

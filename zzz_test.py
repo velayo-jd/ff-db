@@ -11,4 +11,3 @@ while BruhMoment == False:
         continue
     else:
         BruhMoment = True
-    
