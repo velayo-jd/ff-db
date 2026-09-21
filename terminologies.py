@@ -31,6 +31,54 @@ def view_terminologies():
         print(tabulate(myresult, headers=headers, tablefmt="grid", maxcolwidths=[5, 15, 15, 20, 40]))
         return True
 
+def search_terminology(): #c+v on update_character dawgs
+    if not view_terminologies():
+        print("\nNo terminologies to search.")
+        return
+    
+    print("\nSearching Terminology...")
+    sooo_valid = ["1", "2", "3", "4", "5", "ID", "Term", "Term Type", "Exit"]
+    BruhMoment = False
+    while BruhMoment == False:
+        print("\nWhat do you want to search up?")
+        print("[1] ID")
+        print("[2] Term")
+        print("[3] Term Type")
+        print("[4] Back")
+        choice = input("Enter Choice: ")
+        if choice == "-67":
+            print("HA. HAHA. HAHAHA. IM LOSING MY MIND BRUH.")
+            continue
+        if choice not in sooo_valid:
+            print("Please Input a Valid Choice")
+            continue
+        if choice in ["4", "Exit"]:
+            print("Update cancelled.")
+            return
+        BruhMoment = True
+
+    terms = {
+        "1": "id", "ID": "id", "Id": "id", "id": "id",
+        "2": "term", "Term": "term",
+        "3": "term_type", "Term Type": "term_type",
+    }
+
+    field = terms[choice]
+    updoot_val = input(f"Term on '{field}' to search: ")
+
+    #cursor.execute("SELECT * FROM characters")
+    #myresult = cursor.fetchall()
+    #%{keyword}%
+
+    query = f"SELECT * FROM terminologies WHERE {field} LIKE %s"
+    cursor.execute(query, (f"%{updoot_val}%",))
+    myresult = cursor.fetchall()
+
+    if cursor.rowcount == 0:
+        print("No matches found |*_*|")
+    else:
+        headers = ["ID", "Term", "Term Type", "Term Definiton"]
+        print(tabulate(myresult, headers=headers, tablefmt="grid", maxcolwidths=[5, 15, 15, 20, 40]))
 
 def update_terminology():
     if not view_terminologies():
@@ -66,11 +114,9 @@ def update_terminology():
         "3": "term_definition", "Term Definition": "term_definition",
     }
 
-    
-    
     field = what_this[choice]
     updoot_val = input(f"Enter new {field}: ")
-
+    #UPDATE * SET *{} = %s WHERE id = %s
     query = f"UPDATE terminologies SET {field} = %s WHERE id = %s"
     cursor.execute(query, (updoot_val, char_id))
     db.commit()

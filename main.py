@@ -1,6 +1,6 @@
 import db_connect
-from characters import add_character, view_characters, update_character, delete_character
-from terminologies import add_terminology, view_terminologies, update_terminology, delete_terminology
+from characters import add_character, view_characters, update_character, delete_character, search_character
+from terminologies import add_terminology, view_terminologies, update_terminology, delete_terminology, search_terminology
 #condensada sakto packs my goat
 
 def characters_menu():
@@ -8,9 +8,10 @@ def characters_menu():
         print("\nCHARACTERS...")
         print("[1] Add Character")
         print("[2] View All")
-        print("[3] Update Character")
-        print("[4] Delete Character")
-        print("[5] Back")
+        print("[3] Search Character")
+        print("[4] Update Character")
+        print("[5] Delete Character")
+        print("[6] Back")
 
         choice = input("Enter choice: ")
 
@@ -19,10 +20,12 @@ def characters_menu():
         elif choice == "2":
             view_characters()
         elif choice == "3":
-            update_character()
+            search_character()
         elif choice == "4":
-            delete_character()
+            update_character()
         elif choice == "5":
+            delete_character()
+        elif choice == "6":
             break
         else:
             print("Invalid choice knucklechucks.")
@@ -33,9 +36,10 @@ def terminologies_menu():
         print("\nTERMINOLOGIES...")
         print("[1] Add Terminology")
         print("[2] View All")
-        print("[3] Update Terminology")
-        print("[4] Delete Terminology")
-        print("[5] Back")
+        print("[3] Search Terminology")
+        print("[4] Update Terminology")
+        print("[5] Delete Terminology")
+        print("[6] Back")
 
         choice = input("Enter choice: ")
 
@@ -44,10 +48,12 @@ def terminologies_menu():
         elif choice == "2":
             view_terminologies()
         elif choice == "3":
-            update_terminology()
+            search_terminology()
         elif choice == "4":
-            delete_terminology()
+            update_terminology()
         elif choice == "5":
+            delete_terminology()
+        elif choice == "6":
             break
         else:
             print("Invalid choice knucklechucks.")
