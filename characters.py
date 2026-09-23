@@ -17,6 +17,7 @@ def add_character():
     db.commit()
     print(f"'{name}' has been added!")
 
+# i am gay
 
 def view_characters():
     print("\nCurrent Characters...")
