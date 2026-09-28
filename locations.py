@@ -44,7 +44,7 @@ def search_location(): #c+v on update_character dawgs
         return
     
     print("\nSearching Locations...")
-    sooo_valid = ["1", "2", "3", "4", "5", "6", "ID", "Name", "Type", "Region", "Status", "Exit"]
+    sooo_valid = ["1", "2", "3", "4", "5", "6", "7", "ID", "Name", "Type", "Region", "Status", "Details", "Back"]
     BruhMoment = False
     while BruhMoment == False:
         print("\nWhat do you want to search up?")
