@@ -7,15 +7,15 @@ import characters
 import terminologies
 import locations
 
-BG_MAIN = "#1e1e2e"
-BG_SIDE = "#181825"
-BG_PANEL = "#242438"
-BG_HOVER = "#313147"
-FG = "#cdd6f4"
-FG_MUTED = "#7f849c"
-ACCENT = "#89b4fa"
-GREEN = "#a6e3a1"
-RED = "#f38ba8"
+BG_MAIN = "black"
+BG_SIDE = "gray10"
+BG_PANEL = "gray15"
+BG_HOVER = "gray25"
+FG = "white"
+FG_MUTED = "gray60"
+ACCENT = "deep sky blue"
+GREEN = "light green"
+RED = "tomato"
 
 FONT_UI = ("Segoe UI", 10)
 FONT_TITLE = ("Segoe UI", 16, "bold")
@@ -151,9 +151,9 @@ def gui_input(prompt=""):
 
     row = tk.Frame(dlg, bg=BG_PANEL)
     row.pack(pady=(12, 18))
-    make_button(row, "OK", submit, bg=ACCENT, hover="#a6c8ff", anchor="center",
+    make_button(row, "OK", submit, bg=ACCENT, hover="light sky blue", anchor="center",
                 width=10, pady=4).pack(side="left", padx=6)
-    make_button(row, "Cancel", cancel, bg=BG_HOVER, hover="#3d3d59", anchor="center",
+    make_button(row, "Cancel", cancel, bg=BG_HOVER, hover="gray35", anchor="center",
                 width=10, pady=4).pack(side="left", padx=6)
 
     entry.bind("<Return>", submit)
