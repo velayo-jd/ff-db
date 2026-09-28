@@ -28,7 +28,7 @@ def view_terminologies():
         return False
     else:
         headers = ["ID", "Term", "Term Type", "Term Definition"]
-        print(tabulate(myresult, headers=headers, tablefmt="grid", maxcolwidths=[5, 15, 15, 20, 40]))
+        print(tabulate(myresult, headers=headers, tablefmt="grid", maxcolwidths=[5, 15, 20, 40]))
         return True
 
 def search_terminology(): #c+v on update_character dawgs
@@ -78,7 +78,7 @@ def search_terminology(): #c+v on update_character dawgs
         print("No matches found |*_*|")
     else:
         headers = ["ID", "Term", "Term Type", "Term Definiton"]
-        print(tabulate(myresult, headers=headers, tablefmt="grid", maxcolwidths=[5, 15, 15, 20, 40]))
+        print(tabulate(myresult, headers=headers, tablefmt="grid", maxcolwidths=[5, 15, 20, 40]))
 
 def update_terminology():
     if not view_terminologies():
