@@ -51,7 +51,7 @@ class Cancelled(Exception):
 
 
 root = tk.Tk()
-root.title("Final Fall Lore Database")
+root.title("World building my beloved")
 root.geometry("1150x680")
 root.minsize(900, 500)
 root.configure(bg=BG_MAIN)
@@ -75,7 +75,7 @@ main.grid(row=0, column=1, sticky="nsew")
 root.columnconfigure(1, weight=1)
 root.rowconfigure(0, weight=1)
 
-tk.Label(main, text="Final Fall Lore Database", font=FONT_TITLE,
+tk.Label(main, text="Final Fall Bible DB", font=FONT_TITLE,
          bg=BG_MAIN, fg=FG).pack(anchor="w", padx=20, pady=(16, 0))
 tk.Label(main, text="Pick an action from the sidebar", font=FONT_UI,
          bg=BG_MAIN, fg=FG_MUTED).pack(anchor="w", padx=20, pady=(0, 10))
