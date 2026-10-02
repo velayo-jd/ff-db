@@ -55,7 +55,6 @@ root.title("FF's Database Project")
 root.geometry("1150x680")
 root.minsize(900, 500)
 root.configure(bg=BG_MAIN)
-root.iconbitmap("logo.ico")
 
 def make_button(parent, text, command, bg=BG_SIDE, hover=BG_HOVER, anchor="w", **kw):
     b = tk.Button(parent, text=text, command=command, bg=bg, fg=FG,
@@ -260,6 +259,6 @@ make_button(sidebar, "Exit", on_close, padx=18, pady=8).pack(side="bottom", fill
 root.protocol("WM_DELETE_WINDOW", on_close)
 
 log("Forgot something? Changing something?\n", "muted")
-log("Pick an action from the sidebar to get started.\n", "muted")
+log("Pick an action from the sidebar and get to it then.\n", "muted")
 
 root.mainloop()
